@@ -1,0 +1,18 @@
+HTML page to help the user find the next buses for a specific location.
+
+Plan for this subproject:
+ * let user specify a location
+   - via HTML5 geolocation
+   - picking from a map
+   - typing a location, resolved via a map search API?
+ * checkbox to remember choice (cookie)
+   - and possibly local storage caching the mapping of (lat/long -> stop) data to save some server queries
+ * from that location, find nearby stops
+   - if user is within, say, 30 ft of a stop then just use that one
+ * show next arriving buses at that stop/those stops
+ * let user narrow list by:
+   - selecting a single stop from several
+   - use heading to distinguish, say, westbound from eastbound buses -- user has to point the phone the way they want to go
+
+Contributors:
+ - Chris Dolan

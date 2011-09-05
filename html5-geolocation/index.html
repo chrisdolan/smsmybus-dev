@@ -8,11 +8,11 @@
         <ol>
             <li>Specify your location
                 <ul>
-                    <li><a href="javascript:page.getloc();">automatically</a></li>
-                    <li><a href="javascript:page.chooseloc();">from a map</a></li>
+                    <li><a href="javascript:geoloc.getloc();">automatically</a></li>
+                    <li><a href="javascript:geoloc.chooseloc();">from a map</a></li>
                 </ul>
             </li>
-            <li><a href="javascript:page.findstops();">find the nearest stop</a></li>
+            <li><a href="javascript:geoloc.findstops();">find the nearest stop</a></li>
         </ol>
     </p>
 
@@ -31,43 +31,6 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
     <script type="text/javascript" src="../client-js/smsmybus.js"></script>
     <script type="text/javascript" src="smsmybus-devkey.js"></script> <!-- this private script should do the following: SMSMyBus.setDevKey("your-dev-key") -->
-    <script type="text/javascript">//<![CDATA[
-        var smsmybus = new SMSMyBus();
-        var loc = null;
-        var page = {
-            getloc : function() {
-                console.log("page is : ", this);
-                navigator.geolocation.getCurrentPosition(this.getloc_success, this.getloc_error);
-            },
-            getloc_success : function(pos) {
-                console.error("success! ", pos);
-                var coords = pos.coords;
-                $('#locresult').html("lat/lon: " + coords.latitude + ", " + coords.longitude);
-                loc = {lat:coords.latitude, lon:coords.longitude};
-            },
-            getloc_error : function(err) {
-                alert("error: " + err.code + ", " + err.message);
-            },
-            chooseloc : function() {
-                // TBD
-            },
-            findstops : function() {
-                if (!loc) {
-                    alert("no location specified yet!");
-                    return;
-                }
-                smsmybus.getnearbystops(page.getnearbystopsCB, loc.lat, loc.lon);
-            },
-            getnearbystopsCB : function(jsondata) {
-                console.warn("got: ", jsondata);
-                var stops = $("#stops");
-                stops.html("");
-                $.each(jsondata.stops, function(index, value) {
-                    stops.append("<li>#" + value.stopID + " " + value.intersection + "</li>")
-                });
-            }
-        };
-    //]]>
-    </script>
+    <script type="text/javascript" src="smsmybus-geoloc.js"></script>
 </body>
 </html>

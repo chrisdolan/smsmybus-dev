@@ -81,7 +81,7 @@
                 type: "GET",
                 url: this.baseurl + method,
                 data: data,
-                dataType: 'json',
+                dataType: 'jsonp',
                 crossDomain: true,
                 cache: false,
                 timeout: 10000,

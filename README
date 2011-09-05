@@ -6,3 +6,7 @@ To learn more about the API check out the documentation at http://www.smsmybus.c
 gadgets/ :: Contains examples of Google Gadget code.
 
 bus-kiosk/ :: Contains a JavaScript example for displaying arrival times for specific stops. This example is also the code running at the Mother Fool's coffehouse.
+
+client-js/ :: A generic jQuery-based wrapper for interacting with the smsmybus.com/api
+
+html5-geolocation/ :: Lets a browser find bus times from a location
